@@ -1,0 +1,406 @@
+:root {
+  --card-height: 500px;
+  --card-width: calc(var(--card-height) / 1.5);
+  --bg: #FFFFFF;
+  --teks: #333333;
+  --icondll: #A3D4FF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg);
+}
+
+/* Header Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+.header {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  font-family: 'Poppins', serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; /* Padding yang lebih kecil untuk semua ukuran layar */
+  color: var(--teks);
+  background-color: var(--bg);
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  position: fixed; /* Tetap terlihat saat scroll */
+  height: 80px; /* Menetapkan tinggi tetap */
+  margin: 0 auto; /* Memusatkan header */
+  transition: padding 0.3s ease; /* Animasi transisi untuk perubahan padding */
+}
+
+/* Container khusus untuk logo dan dark mode toggle */
+.logo-darkmode-container {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Jarak antara logo dan tombol */
+}
+
+/* Untuk ikon bulan dan matahari */
+.icon-moon, .icon-sun {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.logo a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--teks);
+}
+
+.logo a:hover {
+  color: var(--icondll);
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 5px;
+}
+
+.nav ul li {
+  display: inline-block;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: var(--teks);
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: background 0.3s ease, padding 0.3s ease; /* Animasi transisi untuk perubahan padding */
+}
+
+.nav ul li a:hover {
+  background-color: var(--icondll);
+}
+
+/* Media query untuk layar lebih kecil dari 768px */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px; /* Padding yang lebih kecil */
+  }
+
+  .logo a {
+    font-size: 10px;
+  }
+
+  .icon-moon, .icon-sun {
+    font-size: 14px;
+  }
+
+  .nav ul li a {
+    font-size: 10px; /* Mengurangi ukuran font */
+    padding: 8px 15px; /* Mengurangi padding */
+  }
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: var(--teks);
+  color: var(--bg);
+}
+
+.dark-mode .header {
+  background-color: var(--teks);
+}
+
+.dark-mode .logo a {
+  color: var(--bg);
+}
+
+.dark-mode .logo a:hover {
+  color: var(--icondll);
+}
+
+.dark-mode .nav ul li a {
+  color: var(--bg);
+}
+
+.dark-mode .motto {
+  color: var(--bg);
+}
+
+.dark-mode .desc {
+  color: var(--bg);
+}
+
+.dark-mode .buku-title {
+  color: var(--bg);
+}
+
+.dark-mode .footer {
+  color: var(--bg);
+}
+
+.dark-mode .social-links a{
+  color: var(--bg);
+}
+
+.slider-container {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  width: 100vw;
+  max-width: 1300px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 20px; 
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 1300px;
+  height: 600px; 
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%; 
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-button.left {
+  left: 10px;
+}
+
+.nav-button.right {
+  right: 10px;
+}
+
+.nav-button::before {
+  content: '';
+  border: solid var(--teks);
+  border-width: 0 2px 2px 0;
+  padding: 8px;
+}
+
+.left::before {
+  transform: rotate(135deg);
+}
+
+.right::before {
+  transform: rotate(-45deg);
+}
+
+.motto-container {
+  margin-top: -90px;
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+  padding: 10px; 
+}
+
+.motto {
+  font-family: 'Poppins', serif;
+  font-weight: 600;
+  font-size: 50px; 
+  color: var(--teks); 
+  padding: 15px;
+  border-radius: 5px; 
+}
+
+.desc-container {
+  font-family: 'Poppins', serif;
+  width: 100%;
+  max-width: 800px;
+  text-align: center; 
+  margin: 10px auto; 
+  padding: 10px; 
+}
+
+.desc {
+  font-size: 16px;
+  color: var(--teks); 
+  line-height: 1.6; 
+}
+
+.buku-container {
+  text-align: center; 
+}
+
+.buku-title {
+  font-size: 30px;
+  color: var(--teks); 
+  font-family: 'Poppins', serif; 
+  margin-bottom: -5px;
+}
+
+/* cards section */
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+
+  width: var(--card-width);
+  height: var(--card-height);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 10px;
+  overflow: hidden; 
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  top: 0; 
+}
+
+.card-title {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--bg);
+  text-align: center;
+  transition: all 0.5s;
+  transform: translateY(100%);
+  opacity: 1;
+  overflow: hidden;
+}
+
+.card-title:hover {
+  color: var(--icondll);
+}
+
+a {
+  text-decoration: none;
+}
+
+.card:hover .card-title {
+  transform: translateY(0); 
+}
+
+/* Responsive styles section */
+@media (max-width: 1300px) { 
+  .slider-container {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 100px;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 46vw;
+  }
+}
+
+@media (max-width: 768px) { 
+  .slider-container {
+    margin-top: 100px;
+    margin-bottom: 10px;
+  }
+
+  .slide {
+    height: 50vw;  
+  }
+
+  .cards-container {
+    flex-wrap: wrap; 
+  }
+
+  .card {
+    width: calc(var(--card-width) * 0.8);
+    height: calc(var(--card-height) * 0.8);
+  }
+}
+
+@media (max-width: 480px) {  
+  .slide {
+    height: 56.25vw; 
+  }
+
+  .card {
+    width: calc(var(--card-width) * 0.6);
+    height: calc(var(--card-height) * 0.6);
+  }
+}
+
+/* Footer Styles */
+.footer {
+  font-family: 'Poppins', serif;
+  background: transparent;
+  color: var(--teks);
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.social-links {
+  margin: 10px;
+}
+
+.social-links a {
+  color: var(--teks);
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 20px; /* Ukuran ikon */
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--icondll);
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .footer-content p {
+      font-size: 12px;
+  }
+  
+  .social-links a {
+      font-size: 18px; /* Ukuran ikon untuk layar kecil */
+  }
+}

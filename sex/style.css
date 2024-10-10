@@ -1,0 +1,339 @@
+:root {
+    --bg: #FFFFFF;
+    --teks: #333333;
+    --icondll: #A3D4FF;
+	font-family: 'Poppins', serif;
+	line-height: 1.45;
+  }
+  
+* {
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+.header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    font-family: 'Poppins', serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Padding yang lebih kecil untuk semua ukuran layar */
+    background-color: var(--bg);
+    color: var(--teks);
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    position: fixed; /* Tetap terlihat saat scroll */
+    height: 80px; /* Menetapkan tinggi tetap */
+    margin: 0 auto; /* Memusatkan header */
+    transition: padding 0.3s ease; /* Animasi transisi untuk perubahan padding */
+  }
+  
+  /* Container khusus untuk logo dan dark mode toggle */
+  .logo-darkmode-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Jarak antara logo dan tombol */
+  }
+
+  /* Untuk ikon bulan dan matahari */
+  .icon-moon, .icon-sun {
+    cursor: pointer;
+    font-size: 24px;
+  }
+
+  .logo a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--teks);
+  }
+
+  .logo a:hover {
+    color: var(--icondll);
+  }
+
+  .dark-mode .header {
+    background-color: var(--teks);
+    color: var(--bg);
+  }
+
+  .dark-mode .logo a {
+    color: var(--bg);
+  }
+
+  .dark-mode .logo a:hover {
+    color: var(--icondll);
+  }
+
+  .dark-mode .nav ul li a {
+    color: var(--bg);
+  }
+
+  .dark-mode {
+    background-color: var(--teks);
+  }
+
+  .dark-mode .filter-search-form {
+    color: var(--bg);
+  }
+  
+  .dark-mode .footer {
+    color: var(--bg);
+  }
+
+  .dark-mode .social-links a {
+    color: var(--bg);
+  }
+  
+  .dark-mode h2 {
+    color: var(--bg);
+  }
+
+  .dark-mode .back-button {
+    background-color: var(--bg); /* Button color */
+    color: var(--teks); /* Text color */
+  }
+
+  .nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+  }
+  
+  .nav ul li {
+    display: inline-block;
+  }
+  
+  .nav ul li a {
+    text-decoration: none;
+    color: var(--teks);
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background 0.3s ease, padding 0.3s ease; /* Animasi transisi untuk perubahan padding */
+  }
+  
+  .nav ul li a:hover {
+    background-color: var(--icondll);
+  }
+  
+  /* Media query untuk layar lebih kecil dari 768px */
+  @media (max-width: 768px) {
+    .header {
+      padding: 0 20px; /* Padding yang lebih kecil */
+    }
+  
+    .logo a {
+      font-size: 10px;
+    }
+  
+    .icon-moon, .icon-sun {
+      font-size: 14px;
+    }
+  
+    .nav ul li a {
+      font-size: 10px; /* Mengurangi ukuran font */
+      padding: 8px 15px; /* Mengurangi padding */
+    }
+  }
+  
+ /*
+ * Use :has() to filter items by category using
+ * checkboxes. No JS required!
+ */
+ section:has([name="atasan"]:checked) article:has([data-category="atasan"]) {
+	display: block;
+}
+
+section:has([name="bawahan"]:checked) article:has([data-category="bawahan"]) {
+	display: block;
+}
+
+section:has([name="aksesoris"]:checked) article:has([data-category="aksesoris"]) {
+	display: block;
+}
+
+article {
+	/* color code by category */
+	&:has([data-category="atasan"]) {
+		--hue: 233.35; /* Change hue as needed */
+	}
+
+	&:has([data-category="bawahan"]) {
+		--hue: 91.24; /* Change hue as needed */
+	}
+
+	&:has([data-category="aksesoris"]) {
+		--hue: 334.61; /* Change hue as needed */
+	}
+
+	& img {
+		border: 1px solid oklch(93% 0.1 var(--hue));
+	}
+
+	& .categories {
+		background: oklch(96% 0.05 var(--hue));
+		border: 1px solid oklch(93% 0.1 var(--hue));
+		color: oklch(35% 0.104 var(--hue));
+	}
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+}
+
+section {
+    block-size: auto; /* Change this from 90cqw to auto to avoid fixed height */
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr); /* Make columns responsive */
+    margin: 2rem auto 0; /* Adjust bottom margin to 0 */
+    padding-top: 80px; /* Keep this value if you need space for fixed header */
+}
+
+.filter-search-form {
+    display: flex; /* Aligns child elements in a horizontal line */
+    justify-content: center; /* Space between the filter and search sections */
+    align-items: baseline; /* Center items vertically */
+    border-radius: 0.25rem;
+    color: var(--teks);
+    padding: 1rem;
+  	gap: 1rem;
+	  margin: 0 0 1rem 0; /* Remove bottom margin */
+	  grid-column: 1 / -1; /* Span the entire width */
+    margin-bottom: 1rem;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center; /* Center filter items vertically */
+    gap: 1rem; /* Space between filter options */
+}
+
+label,
+input {
+	color: inherit;
+	font-size: 1rem;
+	line-height: 1;
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	block-size: 1rem;
+	inline-size: 1rem;
+	position: relative;
+	inset-block-start: 0.125rem;
+}
+
+article {
+	container-type: inline-size;
+	display: none;
+	margin: 0;
+
+	& img {
+		aspect-ratio: 16 / 9;
+		border-radius: 0.25rem;
+		display: block;
+		inline-size: 100%;
+		object-fit: cover;
+	}
+
+	& h2 {
+		color: var(--teks);
+		font-size: clamp(0.75rem, 9cqw, 1rem);
+		font-weight: 300;
+		letter-spacing: 0.1em;
+		line-height: 1.1;
+		margin: clamp(0.125rem, 2cqw, 0.375rem) 0;
+	}
+
+	& .categories {
+		border-radius: 0.25rem;
+		display: inline-block;
+		font-size: clamp(0.4rem, 5.5cqw, 0.625rem);
+		letter-spacing: 0.15em;
+		line-height: 1;
+		margin: 0;
+		padding: clamp(0.125rem, 2cqw, 0.25rem);
+		font-variant: small-caps;
+	}
+
+	& .categories::after {
+		content: attr(data-category);
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+/* Footer Styles */
+.footer {
+    font-family: 'Poppins', serif;
+    color: var(--teks);
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-content p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .social-links {
+    margin: 10px;
+  }
+  
+  .social-links a {
+    color: var(--teks);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 20px; /* Ukuran ikon */
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: var(--icondll);
+  }
+  
+  /* Responsif untuk layar kecil */
+  @media (max-width: 768px) {
+    .footer-content p {
+        font-size: 12px;
+    }
+    
+    .social-links a {
+        font-size: 18px; /* Ukuran ikon untuk layar kecil */
+    }
+  }
+
+  .back-button-container {
+	text-align: center; /* Center the button */
+	margin: 20px 0; /* Add some margin above and below */
+}
+
+.back-button {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: var(--teks); /* Button color */
+	color: var(--bg); /* Text color */
+	text-decoration: none; /* Remove underline */
+	border-radius: 5px; /* Rounded corners */
+	font-family: 'Poppins', sans-serif; /* Use Poppins font */
+	font-weight: 500; /* Medium font weight */
+}
+
+.back-button:hover {
+	background-color: var(--icondll); /* Darker button color on hover */
+}
